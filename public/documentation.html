@@ -3,12 +3,84 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <title>Documentation</title>
   </head>
   <body>
     <h1>myFlix</h1>
-    <p>Check <a
-        href="https://docs.google.com/spreadsheets/d/1YwOIVX_N2ZJWyxeBxVcdmdJ0YBq3a6PcRZaSWs_FmLA/edit?usp=sharing"
-        target="_blank">this</a> out for information on how to use the API.</p>
+    <div class="grid-container">
+      <div class="grid-item">Business Logic</div>
+      <div class="grid-item">URL</div>
+      <div class="grid-item">HTTP Method</div>
+      <div class="grid-item">Request body data format</div>
+      <div class="grid-item">Response body data format</div>
+      <div class="grid-item">Return a list of all movies</div>
+      <div class="grid-item">/movies</div>
+      <div class="grid-item">GET</div>
+      <div class="grid-item">none</div>
+      <div class="grid-item">A JSON object holding data about all of the movies</div>
+      <div class="grid-item">Return data (description, genre, director, image
+        URL, whether it's featured or not) about a single movie by title to the
+        user</div>
+      <div class="grid-item">/movies/[Title]</div>
+      <div class="grid-item">GET</div>
+      <div class="grid-item">none</div>
+      <div class="grid-item">A JSON object holding data about the specific movie<br>{<br>title:
+        Batman Begins,<br>description: Bruce Wayne becomes Batman,<br>genre:
+        action,<br>director: Christopher Nolan,<br>image:
+        https://upload.wikimedia.org/wikipedia/en/thumb/a/af/Batman_Begins_Poster.jpg/220px-Batman_Begins_Poster.jpg,<br>featured:
+        false<br>}</div>
+      <div class="grid-item">Return data about a genre (description) by
+        name/title</div>
+      <div class="grid-item">/movies/[Title]/genre</div>
+      <div class="grid-item">GET</div>
+      <div class="grid-item">none</div>
+      <div class="grid-item">A JSON object holding the name of the genre and
+        description of it</div>
+      <div class="grid-item">Return data about a director (bio, birth year,
+        death year) by name</div>
+      <div class="grid-item">/directors/[Name]</div>
+      <div class="grid-item">GET</div>
+      <div class="grid-item">none</div>
+      <div class="grid-item">A JSON object holding the given data about the
+        director</div>
+      <div class="grid-item">Allow new users to register</div>
+      <div class="grid-item">/users/signup</div>
+      <div class="grid-item">POST</div>
+      <div class="grid-item">A JSON object holding the user's username,
+        password, email, and date of birth<br>{<br>username: john23,<br>password:
+        alk47ctnd,<br>email: john23@gmail.com<br>dob: 8/4/2004<br>}</div>
+      <div class="grid-item">A text message indicating whether the user's
+        account was successfully created</div>
+      <div class="grid-item">Allow users to update their user info (username,
+        password, email, and date of birth)</div>
+      <div class="grid-item">/users/[username]/account</div>
+      <div class="grid-item">PUT</div>
+      <div class="grid-item">A JSON object holding the updated credentials<br>{<br>username:
+        john23,<br>password:
+        alk47ctnd,<br>email: john23@gmail.com<br>dob: 8/4/2004<br>}</div>
+      <div class="grid-item">A text message indicating whether the user's
+        credentials were successfully updated</div>
+      <div class="grid-item">Allow users to add a movie to their list of
+        favorites</div>
+      <div class="grid-item">/users/[username]/favorites/[title]</div>
+      <div class="grid-item">POST</div>
+      <div class="grid-item">none</div>
+      <div class="grid-item">A text message indicating whether the movie has
+        been successfully added to the users list of favorites</div>
+      <div class="grid-item">Allow users to remove a movie from the list of
+        favorites</div>
+      <div class="grid-item">/users/[username]/favorites/[title]</div>
+      <div class="grid-item">DELETE</div>
+      <div class="grid-item">none</div>
+      <div class="grid-item">A text message indicating whether the movie has
+        been successfully removed from the users list of favorites</div>
+      <div class="grid-item">Allow users to deregister</div>
+      <div class="grid-item">/users/[username]/account</div>
+      <div class="grid-item">DELETE</div>
+      <div class="grid-item">none</div>
+      <div class="grid-item">A text message indicating whether the user has been
+        successfully deregistered</div>
+    </div>
   </body>
 </html>
