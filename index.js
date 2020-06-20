@@ -1,51 +1,11 @@
 const express = require("express"),
-  morgan = require("morgan");
+  morgan = require("morgan"),
+  bodyParser = require("body-parser"),
+  uuid = require("uuid");
 
 const app = express();
 
-let topMovies = [
-  {
-    title: "The Social Network",
-    year: 2010,
-  },
-  {
-    title: "Batman Begins",
-    year: 2005,
-  },
-  {
-    title: "Iron Man",
-    year: 2008,
-  },
-  {
-    title: "Iron Man 2",
-    year: 2010,
-  },
-  {
-    title: "The Accountant",
-    year: 2016,
-  },
-  {
-    title: "Avengers: Infinity War",
-    year: 2018,
-  },
-  {
-    title: "The Wolf of Wall Street",
-    year: 2003,
-  },
-  {
-    title: "Greater",
-    year: 2016,
-  },
-  {
-    title: "Lone Survivor",
-    year: 2013,
-  },
-  {
-    title: "Avengers: End Game",
-    year: 2019,
-  },
-];
-
+app.use(bodyParser.json());
 app.use(express.static("public"));
 app.use(morgan("common"));
 app.use((err, req, res, next) => {
@@ -54,11 +14,55 @@ app.use((err, req, res, next) => {
 });
 
 app.get("/movies", (req, res) => {
-  res.json(topMovies);
+  res.send("Successful GET request returning data on all movies");
 });
 
-app.get("/", (req, res) => {
-  res.send("Welcome to my movie api!");
+app.get("/movies/:title", (req, res) => {
+  res.send("Successful GET request returning data on the specific title");
+});
+
+app.get("/movies/:title/genre", (req, res) => {
+  res.send(
+    "Successful GET request returning a description of the genre of the specified movie"
+  );
+});
+
+app.get("/directors/:name", (req, res) => {
+  res.send(
+    "Successful GET request returning data about a director (bio, birth year, death year)"
+  );
+});
+
+app.post("/users/signup", (req, res) => {
+  newUser = req.body;
+
+  if (!newUser.username) {
+    const message = "Missing username in request body";
+    res.status(400).send(message);
+  } else {
+    newStudent.id = uuid.v4();
+    res.status(201).send(newStudent);
+  }
+});
+
+app.put("/users/:username/account", (req, res) => {
+  res.send("Successful PUT request updating the user's information");
+});
+
+app.post("/users/:username/favorites/:title", (req, res) => {
+  res.send(
+    "Successful POST request adding the movie to the user's favorite list"
+  );
+});
+
+app.delete("/users/:username/favorites/:title", (req, res) => {
+  res.send(
+    "Successful DELETE request removing the movie from the user's favorite list"
+  );
+});
+
+app.delete("/users/:username/account", (req, res) => {
+  res.send("Successful DELETE request deregistering the user's accont");
 });
 
 app.listen(8080, () =>
