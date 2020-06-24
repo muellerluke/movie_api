@@ -19,7 +19,21 @@
       <div class="grid-item">GET</div>
       <div class="grid-item">none</div>
       <div class="grid-item">
-        A JSON object holding data about all of the movies
+        A JSON object holding data about all of the movies<br />{<br />
+        Title: { type: String, required: true },<br />
+        Description: { type: String, required: true },<br />
+        Genre: {<br />
+        Name: String,<br />
+        Description: String,<br />
+        },<br />
+        Director: {<br />
+        Name: String,<br />
+        Bio: String,<br />
+        },<br />
+        Actors: [String],<br />
+        ImagePath: String,<br />
+        Featured: Boolean,<br />
+        }
       </div>
       <div class="grid-item">
         Return data (description, genre, director, image URL, whether it's
@@ -29,11 +43,21 @@
       <div class="grid-item">GET</div>
       <div class="grid-item">none</div>
       <div class="grid-item">
-        A JSON object holding data about the specific movie<br />{<br />title:
-        Batman Begins,<br />description: Bruce Wayne becomes Batman,<br />genre:
-        action,<br />director: Christopher Nolan,<br />image:
-        https://upload.wikimedia.org/wikipedia/en/thumb/a/af/Batman_Begins_Poster.jpg/220px-Batman_Begins_Poster.jpg,<br />featured:
-        false<br />}
+        A JSON object holding data about the specific movie<br />{<br />
+        Title: { type: String, required: true },<br />
+        Description: { type: String, required: true },<br />
+        Genre: {<br />
+        Name: String,<br />
+        Description: String,<br />
+        },<br />
+        Director: {<br />
+        Name: String,<br />
+        Bio: String,<br />
+        },<br />
+        Actors: [String],<br />
+        ImagePath: String,<br />
+        Featured: Boolean,<br />
+        }
       </div>
       <div class="grid-item">
         Return data about a genre (description) by name/title
@@ -43,6 +67,11 @@
       <div class="grid-item">none</div>
       <div class="grid-item">
         A JSON object holding the name of the genre and description of it
+        <br />
+        Genre: {<br />
+        Name: String,<br />
+        Description: String,<br />
+        },
       </div>
       <div class="grid-item">
         Return data about a director (bio, birth year, death year) by name
@@ -52,18 +81,30 @@
       <div class="grid-item">none</div>
       <div class="grid-item">
         A JSON object holding the given data about the director
+        <br />
+        Director: {<br />
+        Name: String,<br />
+        Bio: String,<br />
+        },
       </div>
       <div class="grid-item">Allow new users to register</div>
       <div class="grid-item">/users/signup</div>
       <div class="grid-item">POST</div>
       <div class="grid-item">
         A JSON object holding the user's username, password, email, and date of
-        birth<br />{<br />username: john23,<br />password: alk47ctnd,<br />email:
-        john23@gmail.com<br />dob: 8/4/2004<br />}
+        birth<br />Username: { type: String, required: true },<br />
+        Password: { type: String, required: true },<br />
+        Email: { type: String, required: true },<br />
+        Birthday: Date,<br />
+        Favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }],
       </div>
       <div class="grid-item">
         A text message indicating whether the user's account was successfully
-        created
+        created<br />Username: { type: String, required: true },<br />
+        Password: { type: String, required: true },<br />
+        Email: { type: String, required: true },<br />
+        Birthday: Date,<br />
+        Favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }],
       </div>
       <div class="grid-item">
         Allow users to update their user info (username, password, email, and
@@ -72,33 +113,49 @@
       <div class="grid-item">/users/[username]/account</div>
       <div class="grid-item">PUT</div>
       <div class="grid-item">
-        A JSON object holding the updated credentials<br />{<br />username:
-        john23,<br />password: alk47ctnd,<br />email: john23@gmail.com<br />dob:
-        8/4/2004<br />}
+        A JSON object holding the updated credentials<br />Username: { type:
+        String, required: true },<br />
+        Password: { type: String, required: true },<br />
+        Email: { type: String, required: true },<br />
+        Birthday: Date
       </div>
       <div class="grid-item">
         A text message indicating whether the user's credentials were
-        successfully updated
+        successfully updated <br />Username: { type: String, required: true
+        },<br />
+        Password: { type: String, required: true },<br />
+        Email: { type: String, required: true },<br />
+        Birthday: Date
       </div>
       <div class="grid-item">
         Allow users to add a movie to their list of favorites
       </div>
-      <div class="grid-item">/users/[username]/favorites/[title]</div>
+      <div class="grid-item">/users/[username]/movies/[title]</div>
       <div class="grid-item">POST</div>
       <div class="grid-item">none</div>
       <div class="grid-item">
         A text message indicating whether the movie has been successfully added
-        to the users list of favorites
+        to the users list of favorites<br />
+        Username: { type: String, required: true },<br />
+        Password: { type: String, required: true },<br />
+        Email: { type: String, required: true },<br />
+        Birthday: Date,<br />
+        Favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }],
       </div>
       <div class="grid-item">
         Allow users to remove a movie from the list of favorites
       </div>
-      <div class="grid-item">/users/[username]/favorites/[title]</div>
+      <div class="grid-item">/users/[username]/movies/[title]</div>
       <div class="grid-item">DELETE</div>
       <div class="grid-item">none</div>
       <div class="grid-item">
         A text message indicating whether the movie has been successfully
-        removed from the users list of favorites
+        removed from the users list of favorites<br />Username: { type: String,
+        required: true },<br />
+        Password: { type: String, required: true },<br />
+        Email: { type: String, required: true },<br />
+        Birthday: Date,<br />
+        Favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: "Movie" }],
       </div>
       <div class="grid-item">Allow users to deregister</div>
       <div class="grid-item">/users/[username]/account</div>
