@@ -32,7 +32,12 @@ app.use((err, req, res, next) => {
   res.status(500).send("Sumthin broked");
 });
 
-let allowedOrigins = ["http://localhost:8080", "http://testsite.com", "*"];
+let allowedOrigins = [
+  "http://localhost:8080",
+  "http://testsite.com",
+  "*",
+  "http://localhost:1234",
+];
 app.use(
   cors({
     origin: (origin, callback) => {
