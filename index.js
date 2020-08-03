@@ -26,13 +26,7 @@ mongoose.connect(process.env.CONNECTION_URI, {
 app.use(bodyParser.json());
 let auth = require("./auth")(app);
 app.use(express.static("public"));
-app.use(morgan("common"));
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send("Sumthin broked");
-});
-
-let allowedOrigins = ["*"];
+let allowedOrigins = ["*", "http://localhost:1234"];
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -47,6 +41,11 @@ app.use(
     },
   })
 );
+app.use(morgan("common"));
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Sumthin broked");
+});
 
 app.get(
   "/users",
