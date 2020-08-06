@@ -24,9 +24,6 @@ mongoose.connect(process.env.CONNECTION_URI, {
 });
 
 app.use(bodyParser.json());
-let auth = require("./auth")(app);
-app.use(express.static("public"));
-let allowedOrigins = ["*", "http://localhost:1234"];
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -41,6 +38,10 @@ app.use(
     },
   })
 );
+let auth = require("./auth")(app);
+app.use(express.static("public"));
+let allowedOrigins = ["*", "http://localhost:1234"];
+
 app.use(morgan("common"));
 app.use((err, req, res, next) => {
   console.error(err.stack);
