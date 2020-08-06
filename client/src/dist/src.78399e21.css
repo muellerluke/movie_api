@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.login-container {
+  display: inline-block;
+  text-align: center;
+}
+
+.login-form {
+  display: inline-block;
+  text-align: left;
+  position: absolute;
+  left: 30%;
+  background-color: #d9d9d9;
+  border-radius: 4px;
+  margin-top: 20px;
+  padding: 10px;
+  width: 32rem;
+}
+
+input {
+  border: 0;
+  border-radius: 3px;
+  margin-left: 3px;
+}
+
+label {
+  font-size: 13px;
+  margin: 5px 5px;
+}
+
+.button-main {
+  color: #fff;
+  background-color: #595959;
+  border: 0;
+  border-radius: 4px;
+  padding: 2px;
+  margin-left: 5px;
+  border-radius: 5px;
+}
+
+.button-main:hover {
+  background-color: #8c8c8c;
+}
+.my-flix {
+  color: steelblue;
+}
+
+/*# sourceMappingURL=/src.78399e21.css.map */
