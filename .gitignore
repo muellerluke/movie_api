@@ -1,1 +1,4 @@
 node_modules/
+public/client/node_modules/
+public/client/.cache/
+public/client/Client/

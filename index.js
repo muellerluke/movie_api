@@ -5,7 +5,8 @@ const express = require("express"),
   uuid = require("uuid"),
   Models = require("./models.js"),
   passport = require("passport"),
-  cors = require("cors");
+  path = require("path");
+cors = require("cors");
 
 require("./passport");
 const { check, validationResult } = require("express-validator");
@@ -22,7 +23,7 @@ mongoose.connect(process.env.CONNECTION_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-
+let allowedOrigins = ["*", "http://localhost:1234"];
 app.use(bodyParser.json());
 app.use(
   cors({
@@ -40,14 +41,16 @@ app.use(
 );
 let auth = require("./auth")(app);
 app.use(express.static("public"));
-let allowedOrigins = ["*", "http://localhost:1234"];
+app.use("/client", express.static(path.join(__dirname, "client", "dist")));
 
 app.use(morgan("common"));
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Sumthin broked");
 });
-
+app.get("/client/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+});
 app.get(
   "/users",
   passport.authenticate("jwt", { session: false }),
