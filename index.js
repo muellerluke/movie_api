@@ -23,7 +23,10 @@ mongoose.connect(process.env.CONNECTION_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-let allowedOrigins = ["*", "http://localhost:1234"];
+let allowedOrigins = [
+  "https://myflixluke.herokuapp.com/",
+  "http://localhost:1234",
+];
 app.use(bodyParser.json());
 app.use(
   cors({
