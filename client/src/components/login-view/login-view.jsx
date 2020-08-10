@@ -13,7 +13,7 @@ export function LoginView(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://myflixluke.herokuapp.com/login", {
+      .post("/login", {
         Username: username,
         Password: password,
       })

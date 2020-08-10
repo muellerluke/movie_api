@@ -17,7 +17,7 @@ export function RegistrationView(props) {
     e.preventDefault();
 
     axios
-      .post("https://myflixluke.herokuapp.com/users", {
+      .post("/users", {
         Username: username,
         Password: password,
         Email: email,
