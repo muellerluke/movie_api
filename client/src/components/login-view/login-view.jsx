@@ -12,11 +12,12 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    let data = JSON.stringify({
+      Username: username,
+      Password: password,
+    });
     axios
-      .post("/login", {
-        Username: username,
-        Password: password,
-      })
+      .post("/login", data, { headers: { "Content-Type": "application/json" } })
       .then((response) => {
         const data = response.data;
         props.onLoggedIn(data);
