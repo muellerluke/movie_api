@@ -51,6 +51,7 @@ app.use((err, req, res, next) => {
 app.get("/client/*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
 });
+
 app.get(
   "/users",
   passport.authenticate("jwt", { session: false }),
