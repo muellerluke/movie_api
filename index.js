@@ -24,7 +24,7 @@ mongoose.connect(process.env.CONNECTION_URI, {
   useUnifiedTopology: true,
 });
 let allowedOrigins = [
-  "https://myflixluke.herokuapp.com/",
+  "https://myflixluke.herokuapp.com",
   "http://localhost:1234",
 ];
 app.use(bodyParser.json());
