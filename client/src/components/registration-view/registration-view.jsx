@@ -13,6 +13,15 @@ export function RegistrationView(props) {
   const [email, createEmail] = useState("");
   const [birthday, createDob] = useState("");
 
+  /**
+   * Register a new user
+   * @function handleSubmit
+   * @axios
+   * @param {string} username
+   * @param {string} password
+   * @param {string} email
+   * @param {date} dob
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
 

@@ -28,6 +28,11 @@ export class ProfileView extends React.Component {
     this.getUser(accessToken);
   }
 
+   /**
+   * Display current user
+   * @function getUser
+   * @axios
+   */
   getUser(token) {
     const username = localStorage.getItem("user");
 
